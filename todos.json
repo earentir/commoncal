@@ -1,0 +1,22 @@
+{
+    "2023/06/22": [
+        {
+            "title": "GGD",
+            "description": "Night Deployment",
+            "start_time": "20:00",
+            "end_time": "03:00",
+            "background": "#2C5F2D",
+            "foreground": "#fff"
+        }
+    ],
+    "2023/07/06": [
+        {
+            "title": "Push + Routes",
+            "description": "WH Deployment",
+            "start_time": "20:00",
+            "end_time": "03:00",
+            "background": "#90ee90",
+            "foreground": "#000000"
+        }
+    ]
+}
