@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/static/style.css">
+    </head>
+<body>
+    <h1 class="rotated-title">{{.Month}} {{.Year}} Calendar</h1>
+    <div class="flex-table">
+        <div class="flex-row">
+            <div class="flex-cell week-number-header"><div>Week</div></div>
+            <div class="flex-cell day-header">Monday</div>
+            <div class="flex-cell day-header">Tuesday</div>
+            <div class="flex-cell day-header">Wednesday</div>
+            <div class="flex-cell day-header">Thursday</div>
+            <div class="flex-cell day-header">Friday</div>
+            <div class="flex-cell weekend-header">Saturday</div>
+            <div class="flex-cell weekend-header">Sunday</div>
+        </div>
+        {{range .Calendar}}
+            <div class="flex-row">
+                <div class="flex-cell week-number"><div>{{.WeekNumber}}</div></div>
+                {{range $index, $day := .Days}}
+                    {{if $day}}
+                        <div class="flex-cell day {{if eq $day.DayName "Saturday"}}weekend{{else if eq $day.DayName "Sunday"}}weekend{{end}}">
+                            <div class="title">{{$day.Date.Day}} ({{$day.DayOfYear}})</div>
+                            {{range $day.Todos}}
+                                <div class="todo">
+                                    <span class="todo-title" style="background-color: {{.Background}}; color: {{.Foreground}}" title="{{.Title}}">{{.Title}}<br/><span class="todo-time" >{{.StartTime}} - {{.EndTime}}</span></span>
+                                    <span class="tooltip" >{{.Title}}<br>{{.Description}}<br>{{.StartTime}} - {{.EndTime}}</span><br>
+                                </div>
+                            {{end}}
+                        </div>
+                    {{else}}
+                        <div class="flex-cell notcurrentmonth {{if or (eq $index 5) (eq $index 6)}}weekend{{end}}"></div>
+                    {{end}}
+                {{end}}
+            </div>
+        {{end}}
+    </div>
+</body>
+</html>
