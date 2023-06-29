@@ -1,0 +1,155 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #000;
+}
+
+.flex-table {
+    width: calc(100% - 50px); /* subtracting the left margin from the total width */
+    margin-left: 50px; /* left margin for the table */
+    display: flex;
+    flex-direction: column;
+    border-collapse: collapse;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-cell {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+    width: 160px;
+    min-height: 160px;
+    background-color: white;
+    overflow: visible;
+}
+
+.flex-table .flex-row .flex-cell {
+    flex-grow: 1;
+}
+
+.flex-table .flex-row .week-number,
+.flex-table .flex-row .week-number-header,
+.flex-table .flex-row .weekend-header,
+.flex-table .flex-row .weekend{
+    flex-grow: 0;  /* this will prevent these cells from growing */
+}
+
+.day-header, .weekend-header, .week-number-header {
+    min-height: 50px; /* reset min-height for headers */
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #a8957f;
+    color: white;
+}
+
+.day-header {
+    min-width: 200px;
+}
+
+.weekend-header {
+    width: 70px;
+}
+
+.week-number, .week-number-header {
+    width: 20px;
+    background-color: #a8957f;
+}
+
+.week-number div, .week-number-header div {
+    writing-mode: vertical-rl; /* rotate the text inside */
+    transform: rotate(180deg); /* flip the text to make it readable */
+}
+
+.title {
+    font-weight: bold;
+    border-bottom: 1px solid #E0A96D;
+    color: white;
+    background-color: #201E20;
+    padding: 2px;
+}
+
+.todo-title {
+    margin-top: 5px;
+    display: block;
+}
+
+.todo-time {
+    font-size: 0.7em;
+}
+
+.day {
+    min-width: 200px;
+}
+
+.day, .weekend {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #DDC3A5;
+}
+
+.weekend, .weekend.notcurrentmonth {
+    width: 70px;
+    min-width: 70px;
+    background-color: #b3b3b3;
+}
+
+.notcurrentmonth {
+    background-color: #737373;
+    min-width: 200px;
+}
+
+.rotated-title {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    position: absolute;
+    left: 20px;
+    top: 30%;
+    transform-origin: top left;
+    margin-left: 20px;
+    color: white;
+}
+
+.todo {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: calc(100% - 20px);
+    box-sizing: border-box;
+}
+
+.todo:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 90%;
+    height: 90%;
+    top: 5%;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1000000;
+    bottom: 5%;
+    left: 5%;
+    opacity: 0;
+    transition: opacity 0.5s;
+    box-sizing: border-box;
+}
+
+.todo:hover .tooltip {
+    visibility: visible;
+    opacity: 0.8;
+}
